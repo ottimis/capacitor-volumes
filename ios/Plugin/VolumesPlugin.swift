@@ -9,10 +9,16 @@ import Capacitor
 public class VolumesPlugin: CAPPlugin {
     private let implementation = Volumes()
 
-    @objc func echo(_ call: CAPPluginCall) {
-        let value = call.getString("value") ?? ""
+    @objc func getVolumeLevel(_ call: CAPPluginCall) {
         call.resolve([
-            "value": implementation.echo(value)
+            "value": implementation.getVolumeLevel()
+        ])
+    }
+    
+    @objc func setVolumeLevel(_ call: CAPPluginCall) {
+        let value = call.getFloat("value") ?? 5
+        call.resolve([
+            "value": implementation.setVolumeLevel(value)
         ])
     }
 }

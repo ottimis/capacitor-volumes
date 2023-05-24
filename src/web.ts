@@ -3,8 +3,18 @@ import { WebPlugin } from '@capacitor/core';
 import type { VolumesPlugin } from './definitions';
 
 export class VolumesWeb extends WebPlugin implements VolumesPlugin {
-  async echo(options: { value: string }): Promise<{ value: string }> {
-    console.log('ECHO', options);
-    return options;
+
+  NOT_SUPPORTED = "ERR_PLATFORM_NOT_SUPPORTED";
+
+  async getVolumeLevel(): Promise<any> {
+    return new Promise<void>((_resolve, reject) => {
+      reject(this.NOT_SUPPORTED);
+    });
+  }
+
+  async setVolumeLevel(): Promise<any> {
+    return new Promise<void>((_resolve, reject) => {
+      reject(this.NOT_SUPPORTED);
+    });
   }
 }
