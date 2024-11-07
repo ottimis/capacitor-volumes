@@ -2,7 +2,7 @@
 
 Manage device volume from capacitor.
 
-Get volume level in a range between 1 and 10.
+Get volume level in a range between 0 and 1.
 Volume will be set proportionally in a scale between 0 and "maxVolumeOfDevice".
 
 ⭐️ Any suggestion will be appreciated
@@ -10,10 +10,10 @@ Volume will be set proportionally in a scale between 0 and "maxVolumeOfDevice".
 ## Supported platforms
 
 | Platform | Supported |
-| -------- | --------- |
-| Android  | ✅        |
-| iOS      | ✅        | (only getVolumeLevel)
-| Web      | ❌        |
+| -------- |-----------|
+| Android  | ✅         |
+| iOS      | ✅ (only getVolumeLevel)        |
+| Web      | ❌         |
 
 ## Install
 
