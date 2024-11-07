@@ -1,6 +1,6 @@
 {
   "name": "@ottimis/capacitor-volumes",
-  "version": "6.0.0",
+  "version": "6.1.0",
   "description": "Manage volume from capacitor.",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
