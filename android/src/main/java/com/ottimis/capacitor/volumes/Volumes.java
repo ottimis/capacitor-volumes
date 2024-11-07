@@ -13,10 +13,13 @@ public class Volumes {
         context = applicationContext;
     }
 
-    public int getVolumeLevel(int type) {
+    public float getVolumeLevel(int type) {
         AudioManager am = (AudioManager) context.getSystemService(AUDIO_SERVICE);
         int volume_level= am.getStreamVolume(type);
-        return volume_level;
+        int max_volume_level = am.getStreamMaxVolume(type);
+
+        // Normalize between 0 e 1
+        return (float) volume_level / max_volume_level;
     }
 
     public int getVolumeMaxLevel(int type) {
@@ -25,16 +28,16 @@ public class Volumes {
         return volume_max_level;
     }
 
-    public int setVolumeLevel(int type, int value) {
+    public float setVolumeLevel(int type, float normalizedValue) {
         AudioManager am = (AudioManager) context.getSystemService(AUDIO_SERVICE);
 
-        // Get the proportional value having 10 steps
+        // Converti il valore normalizzato (0-1) in un valore reale di volume
         int maxValue = am.getStreamMaxVolume(type);
-        int volume_level_fixed = (int) Math.ceil((value * maxValue) / 10);
+        int volume_level_fixed = Math.round(normalizedValue * maxValue);
 
         am.setStreamVolume(type, volume_level_fixed, 0);
 
-        int volume_level = getVolumeLevel(type);
-        return volume_level;
+        // Restituisci il nuovo livello normalizzato tra 0 e 1
+        return getVolumeLevel(type);
     }
 }
